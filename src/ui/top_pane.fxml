@@ -10,12 +10,12 @@
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="24.0" prefHeight="58.0" prefWidth="166.0" text="TOP 5">
          <font>
-            <Font size="44.0" />
+            <Font name="System Bold" size="44.0" />
          </font>
       </Label>
-      <TableView fx:id="tableAccList" layoutX="128.0" layoutY="89.0" prefHeight="391.0" prefWidth="420.0" style="-fx-background-color: #d2dac5;">
+      <TableView fx:id="tableTop" layoutX="128.0" layoutY="89.0" prefHeight="391.0" prefWidth="420.0" style="-fx-background-color: #d2dac5;">
          <columns>
-            <TableColumn fx:id="colUserName" prefWidth="184.0" text="User Name" />
+            <TableColumn fx:id="colNickname" prefWidth="184.0" text="Nickname" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
