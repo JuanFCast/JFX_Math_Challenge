@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.MathChallenge;
@@ -24,6 +26,10 @@ public class MathChallengeGUI {
     private TextField Name_txtField;
 	@FXML
     private Label exercise_Label;
+	@FXML
+	private TableView<?> tableTop;
+	@FXML
+	private TableColumn<?, ?> colNickname;
 	
 	
 	public MathChallengeGUI() {
@@ -83,4 +89,5 @@ public class MathChallengeGUI {
 	public void printWarning(String message) {
     	JOptionPane.showMessageDialog(null, message);
     }
+
 }
