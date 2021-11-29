@@ -6,7 +6,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" layoutX="208.0" layoutY="42.0" prefHeight="118.0" prefWidth="243.0" style="-fx-border-color: red;" text="OPERACION" textAlignment="CENTER">
@@ -15,7 +14,7 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="407.0" layoutX="622.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="33.0" />
-      <Label alignment="CENTER" layoutX="150.0" layoutY="177.0" prefHeight="137.0" prefWidth="359.0" style="-fx-border-color: red;" text="2+2" textAlignment="CENTER">
+      <Label fx:id="exercise_Label" alignment="CENTER" layoutX="150.0" layoutY="177.0" prefHeight="137.0" prefWidth="359.0" style="-fx-border-color: red;" text="2+2" textAlignment="CENTER">
          <font>
             <Font size="85.0" />
          </font>

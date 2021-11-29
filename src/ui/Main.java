@@ -1,5 +1,10 @@
 package ui;
 
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 /**
  * This is Main Class.
  * @version 1
@@ -8,10 +13,20 @@ package ui;
  * @author Jesus David Rodriguez Burbano, https://github.com/JesusD03
  */
 
-public class Main {
+public class Main extends Application{
 	
 	public static void main(String [] team) {
-		
+		launch(team);
 	}
 	
+	@Override
+	public void start(Stage primaryStage) {
+        MathChallengeGUI controller = new MathChallengeGUI();
+        controller.setMainStage(primaryStage);
+        try {
+			controller.LogInMenu();
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error");
+		}
+	}
 }
