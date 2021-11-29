@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" layoutX="208.0" layoutY="42.0" prefHeight="118.0" prefWidth="243.0" style="-fx-border-color: red;" text="OPERACION" textAlignment="CENTER">
+      <Label fx:id="nameOperator_label" alignment="CENTER" layoutX="162.0" layoutY="42.0" prefHeight="118.0" prefWidth="335.0" style="-fx-border-color: red;" text="OPERACION" textAlignment="CENTER">
          <font>
             <Font size="33.0" />
          </font>
@@ -19,22 +19,22 @@
             <Font size="85.0" />
          </font>
       </Label>
-      <Button layoutX="28.0" layoutY="374.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="124.0" text="Respuesta 1">
+      <Button fx:id="answer1_button" layoutX="28.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer1_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 1">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="179.0" layoutY="374.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="124.0" text="Respuesta 2">
+      <Button fx:id="answer2_button" layoutX="179.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer2_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 2">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="329.0" layoutY="374.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="124.0" text="Respuesta 3">
+      <Button fx:id="answer3_button" layoutX="329.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer3_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 3">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="479.0" layoutY="374.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="124.0" text="Respuesta 4">
+      <Button fx:id="answer4_button" layoutX="479.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer4_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 4">
          <font>
             <Font size="18.0" />
          </font>

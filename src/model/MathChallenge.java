@@ -1,5 +1,6 @@
 package model;
 
+import Thread.ExerciseThread;
 
 public class MathChallenge {
 
@@ -10,12 +11,20 @@ public class MathChallenge {
 		challenger = new Player(name);
 	}
 	
-	public void createNewExercise() {
-		exercise = new Exercise();
-	}
-	
 	public String getExercise() {
 		return exercise.getExercise();
+	}
+	
+	public String getAnswer() {
+		return exercise.getAnswer();
+	}
+	
+	public void setExercise(Exercise ex) {
+		exercise = ex;
+	}
+	
+	public String getNameOperator() {
+		return exercise.getNameOperator();
 	}
 	
 }
