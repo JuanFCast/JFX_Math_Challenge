@@ -113,6 +113,7 @@ public class MathChallengeGUI {
 		nameOperator_label.setText(mathChallenge.getNameOperator());
 		exercise_Label.setText(mathChallenge.getExercise());
 		answer1_button.setText(mathChallenge.getAnswer());
+		answer2_button.setText(mathChallenge.getFakeAnswer()[0]);
 		
 	}
 	

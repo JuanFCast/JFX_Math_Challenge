@@ -1,7 +1,5 @@
 package model;
 
-import Thread.ExerciseThread;
-
 public class MathChallenge {
 
 	private Exercise exercise;
@@ -19,12 +17,20 @@ public class MathChallenge {
 		return exercise.getAnswer();
 	}
 	
+	public String[] getFakeAnswer() {
+		return exercise.getFakeAnswers();
+	}
+	
 	public void setExercise(Exercise ex) {
 		exercise = ex;
 	}
 	
 	public String getNameOperator() {
 		return exercise.getNameOperator();
+	}
+	
+	public Player getChallenger() {
+		return challenger;
 	}
 	
 }
