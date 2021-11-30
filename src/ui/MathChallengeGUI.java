@@ -41,6 +41,10 @@ public class MathChallengeGUI {
 	@FXML
 	private Button answer4_button;
 	@FXML
+    private Label score_label;
+    @FXML
+    private Label nameChallenger_label;
+	@FXML
 	private TableView<?> tableTop;
 	@FXML
 	private TableColumn<?, ?> colNickname;
@@ -110,6 +114,7 @@ public class MathChallengeGUI {
 		ext = new ExerciseThread(new Exercise(), mathChallenge);
 		ext.start();
 		ext.join();
+		nameChallenger_label.setText(mathChallenge.getChallenger().getName());
 		nameOperator_label.setText(mathChallenge.getNameOperator());
 		exercise_Label.setText(mathChallenge.getExercise());
 		answer1_button.setText(mathChallenge.getAnswer());

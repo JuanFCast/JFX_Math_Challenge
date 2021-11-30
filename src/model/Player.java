@@ -27,6 +27,14 @@ public class Player {
 	
 	
 	//Getters & Setters
+	public String getName() {
+		return name;
+	}
+	
+	public long getScore() {
+		return score;
+	}
+	
 	public Player getUp() {
 		return up;
 	}

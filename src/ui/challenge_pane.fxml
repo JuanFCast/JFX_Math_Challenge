@@ -6,38 +6,56 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="698.0" style="-fx-background-color: #F5F5ED;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="nameOperator_label" alignment="CENTER" layoutX="162.0" layoutY="42.0" prefHeight="118.0" prefWidth="335.0" style="-fx-border-color: red;" text="OPERACION" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dce0e1" height="118.0" layoutX="2.0" stroke="BLACK" strokeType="INSIDE" width="698.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3f22cd" height="118.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+      <Label fx:id="nameOperator_label" alignment="CENTER" layoutX="182.0" layoutY="135.0" prefHeight="118.0" prefWidth="335.0" style="-fx-border-color: red;" text="OPERACION" textAlignment="CENTER">
          <font>
             <Font size="33.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="407.0" layoutX="622.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="33.0" />
-      <Label fx:id="exercise_Label" alignment="CENTER" layoutX="150.0" layoutY="177.0" prefHeight="137.0" prefWidth="359.0" style="-fx-border-color: red;" text="2+2" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="38.0" layoutX="334.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="351.0" />
+      <Label fx:id="exercise_Label" alignment="CENTER" layoutX="170.0" layoutY="265.0" prefHeight="137.0" prefWidth="359.0" style="-fx-border-color: red;" text="2+2" textAlignment="CENTER">
          <font>
             <Font size="85.0" />
          </font>
       </Label>
-      <Button fx:id="answer1_button" layoutX="28.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer1_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 1">
+      <Button fx:id="answer1_button" layoutX="26.0" layoutY="420.0" mnemonicParsing="false" onAction="#Answer1_Pressed" prefHeight="80.0" prefWidth="133.0" style="-fx-background-color: #94F1E5;" text="Respuesta 1">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="answer2_button" layoutX="179.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer2_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 2">
+      <Button fx:id="answer2_button" layoutX="182.0" layoutY="420.0" mnemonicParsing="false" onAction="#Answer2_Pressed" prefHeight="80.0" prefWidth="133.0" style="-fx-background-color: #94F1E5;" text="Respuesta 2">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="answer3_button" layoutX="329.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer3_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 3">
+      <Button fx:id="answer3_button" layoutX="379.0" layoutY="420.0" mnemonicParsing="false" onAction="#Answer3_Pressed" prefHeight="80.0" prefWidth="133.0" style="-fx-background-color: #94F1E5;" text="Respuesta 3">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="answer4_button" layoutX="479.0" layoutY="374.0" mnemonicParsing="false" onAction="#Answer4_Pressed" prefHeight="80.0" prefWidth="124.0" text="Respuesta 4">
+      <Button fx:id="answer4_button" layoutX="539.0" layoutY="420.0" mnemonicParsing="false" onAction="#Answer4_Pressed" prefHeight="80.0" prefWidth="133.0" style="-fx-background-color: #94F1E5;" text="Respuesta 4">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <Label layoutX="26.0" layoutY="75.0" text="SCORE:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="38.0" layoutX="334.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="351.0" />
+      <Label fx:id="score_label" layoutX="137.0" layoutY="75.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameChallenger_label" layoutX="26.0" layoutY="38.0" text="Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
