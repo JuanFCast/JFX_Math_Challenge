@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Exercise;
 import model.MathChallenge;
+import model.RandomNumber;
 
 public class MathChallengeGUI {
 
@@ -70,22 +71,43 @@ public class MathChallengeGUI {
 	
 	@FXML
 	public void Answer1_Pressed(ActionEvent event) throws InterruptedException {
+		if (answer1_button.getText().equals(mathChallenge.getAnswer())) {
+			mathChallenge.getChallenger().increaseScore();
+		}else {
+			mathChallenge.getChallenger().decreaseScore();
+		}
+		updateChallengeMenu();
+		
+	}
+
+	@FXML
+	public void Answer2_Pressed(ActionEvent event) throws InterruptedException {
+		if (answer2_button.getText().equals(mathChallenge.getAnswer())) {
+			mathChallenge.getChallenger().increaseScore();
+		}else {
+			mathChallenge.getChallenger().decreaseScore();
+		}
 		updateChallengeMenu();
 	}
 
 	@FXML
-	public void Answer2_Pressed(ActionEvent event) {
-
+	public void Answer3_Pressed(ActionEvent event) throws InterruptedException {
+		if (answer3_button.getText().equals(mathChallenge.getAnswer())) {
+			mathChallenge.getChallenger().increaseScore();
+		}else {
+			mathChallenge.getChallenger().decreaseScore();
+		}
+		updateChallengeMenu();
 	}
 
 	@FXML
-	public void Answer3_Pressed(ActionEvent event) {
-
-	}
-
-	@FXML
-	public void Answer4_Pressed(ActionEvent event) {
-
+	public void Answer4_Pressed(ActionEvent event) throws InterruptedException {
+		if (answer4_button.getText().equals(mathChallenge.getAnswer())) {
+			mathChallenge.getChallenger().increaseScore();
+		}else {
+			mathChallenge.getChallenger().decreaseScore();
+		}
+		updateChallengeMenu();
 	}
 	
 	public void LogInMenu() throws IOException {
@@ -115,12 +137,54 @@ public class MathChallengeGUI {
 		ext.start();
 		ext.join();
 		nameChallenger_label.setText(mathChallenge.getChallenger().getName());
+		score_label.setText(""+mathChallenge.getChallenger().getScore());
 		nameOperator_label.setText(mathChallenge.getNameOperator());
 		exercise_Label.setText(mathChallenge.getExercise());
-		answer1_button.setText(mathChallenge.getAnswer());
-		answer2_button.setText(mathChallenge.getFakeAnswer()[0]);
+		randomAnswers();
 		
 	}
+	
+	
+	private void randomAnswers() {
+		
+		RandomNumber num = new RandomNumber(1,4);
+		int r = num.getRandomNumber();
+
+		switch (r) {
+		case 1:
+			answer1_button.setText(mathChallenge.getAnswer());
+			answer2_button.setText(mathChallenge.getFakeAnswer()[0]);
+			answer3_button.setText(mathChallenge.getFakeAnswer()[1]);
+			answer4_button.setText(mathChallenge.getFakeAnswer()[2]);
+			break;
+		
+		case 2:
+			answer1_button.setText(mathChallenge.getFakeAnswer()[0]);
+			answer2_button.setText(mathChallenge.getAnswer());
+			answer3_button.setText(mathChallenge.getFakeAnswer()[1]);
+			answer4_button.setText(mathChallenge.getFakeAnswer()[2]);
+			break;
+		
+		case 3:
+			answer1_button.setText(mathChallenge.getFakeAnswer()[0]);
+			answer2_button.setText(mathChallenge.getFakeAnswer()[1]);
+			answer3_button.setText(mathChallenge.getAnswer());
+			answer4_button.setText(mathChallenge.getFakeAnswer()[2]);
+			break;
+			
+		case 4:
+			answer1_button.setText(mathChallenge.getFakeAnswer()[0]);
+			answer2_button.setText(mathChallenge.getFakeAnswer()[1]);
+			answer3_button.setText(mathChallenge.getFakeAnswer()[2]);
+			answer4_button.setText(mathChallenge.getAnswer());
+			break;
+
+		default:
+			break;
+		}
+
+	}
+	
 	
 	
 	

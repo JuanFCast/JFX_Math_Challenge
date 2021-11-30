@@ -33,4 +33,8 @@ public class MathChallenge {
 		return challenger;
 	}
 	
+	public long getScore() {
+		return challenger.getScore();
+	}
+	
 }
