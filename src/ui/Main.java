@@ -15,13 +15,15 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 	
+	private MathChallengeGUI controller;
+	
 	public static void main(String [] team) {
 		launch(team);
 	}
 	
 	@Override
 	public void start(Stage primaryStage) {
-        MathChallengeGUI controller = new MathChallengeGUI();
+        controller = new MathChallengeGUI();
         controller.setMainStage(primaryStage);
         try {
 			controller.LogInMenu();
