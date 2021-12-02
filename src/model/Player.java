@@ -1,7 +1,11 @@
 package model;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1L;
 	private int position;
 	private String name;
 	private long score;
@@ -15,6 +19,11 @@ public class Player {
 	public Player(String name) {
 		this.name = name;
 		score = 0;
+	}
+	
+	public Player(String name, long score) {
+		this.name = name;
+		this.score = score;
 	}
 	
 	public void increaseScore() {
@@ -31,10 +40,18 @@ public class Player {
 		return name;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public long getScore() {
 		return score;
 	}
 	
+	public void setScore(long score) {
+		this.score = score;
+	}
+
 	public Player getUp() {
 		return up;
 	}
@@ -57,6 +74,10 @@ public class Player {
 
 	public void setRight(Player right) {
 		this.right = right;
+	}
+
+	public int getPosition() {
+		return position;
 	}
 
 	public void setPosition(int position) {
