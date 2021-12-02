@@ -1,9 +1,9 @@
 package model;
 
 /*
- * Añadir (Para añadir cada jugador al arbol binario)
+ * Añadir (Para añadir cada jugador al arbol binario) ya
  * Eliminar (Para borrar determinado jugador)
- * Buscar (Para buscar un jugador especifico)
+ * Buscar (Para buscar un jugador especifico) ya 
  * Retornar un arreglo con los primeros 5 jugadores
  * Retornar la posicion del jugador que esta jugando
  * Leer cada jugador del docs que los guardara
@@ -28,7 +28,8 @@ public class ScoreBoard {
 	}
 	
 	
-	//Para este caso manejaremos puntajes menores o iguales asignados a la izquierda, y puntajes mayores para la derecha
+	//Para este caso manejaremos puntajes menores o iguales asignados a la izquierda, 
+	//y puntajes mayores para la derecha
 	private void addChallenger(Player n, Player r) {
 		if(n.getScore() <= r.getScore()) {
 			if(r.getLeft() != null) {

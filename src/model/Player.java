@@ -31,10 +31,18 @@ public class Player {
 		return name;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public long getScore() {
 		return score;
 	}
 	
+	public void setScore(long score) {
+		this.score = score;
+	}
+
 	public Player getUp() {
 		return up;
 	}
@@ -57,6 +65,10 @@ public class Player {
 
 	public void setRight(Player right) {
 		this.right = right;
+	}
+
+	public int getPosition() {
+		return position;
 	}
 
 	public void setPosition(int position) {
