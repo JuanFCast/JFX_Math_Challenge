@@ -66,7 +66,9 @@ public class MathChallengeGUI {
     	if(!name.equals("")) {
     		mathChallenge = new MathChallenge(name);
         	ChallengeMenu();
-        	timer();
+        	Timer timer = new Timer();
+        	mathChallenge.setTimer(timer);
+        	startTimer(timer);
         	updateChallengeMenu();
     	} else {
     		printWarning("The field can't be void");
@@ -188,12 +190,23 @@ public class MathChallengeGUI {
 
 	}
 	
-	public void timer() throws InterruptedException {
-		TimerThread timerThread = new TimerThread(new Timer(), mathChallenge);
-		timerThread.start();
-		while(mathChallenge.timeIsOver() == false) {
-			timer_label.setText(mathChallenge.getTime());
-		}	
+	public void startTimer(Timer t) throws InterruptedException {
+		Thread.sleep(1000);
+		TimerThread timerThread = new TimerThread(t, mathChallenge);
+		timer_label.setText(mathChallenge.getTime());
+		
+		if(!mathChallenge.timeIsOver()) {
+			timerThread.start();
+			timerThread.join();
+			startTimer(t);
+		}
+
+		
+//		while(mathChallenge.timeIsOver() == false) {
+//			timer_label.setText(mathChallenge.getTime());
+//			Thread.sleep(1000);
+//			mathChallenge.start();
+//		}
 	}
 	
 	

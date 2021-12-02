@@ -14,13 +14,16 @@
             <Image url="@../../media/Fondo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="200.0" fitWidth="277.0" layoutX="193.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="200.0" fitWidth="277.0" layoutX="193.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../media/Math%20Challenge%20logo.png" />
+            <Image url="@../../media/Math_Challenge.png" />
          </image>
       </ImageView>
-      <TextField fx:id="Name_txtField" layoutX="193.0" layoutY="294.0" prefHeight="30.0" prefWidth="277.0" promptText="Name" />
-      <Button layoutX="291.0" layoutY="362.0" mnemonicParsing="false" onAction="#startChallenge" prefHeight="44.0" prefWidth="81.0" text="Play">
+      <TextField fx:id="Name_txtField" layoutX="193.0" layoutY="293.0" prefHeight="30.0" prefWidth="277.0" promptText="Name">
+         <font>
+            <Font size="19.0" />
+         </font></TextField>
+      <Button layoutX="278.0" layoutY="347.0" mnemonicParsing="false" onAction="#startChallenge" prefHeight="51.0" prefWidth="108.0" text="Play">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

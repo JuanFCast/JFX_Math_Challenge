@@ -11,7 +11,6 @@ public class TimerThread extends Thread{
 	public TimerThread(Timer t, MathChallenge mt) {
 		timer = t;
 		mathChallenge = mt;
-		mt.setTimer(t);
 	}
 	
 	public void run() {

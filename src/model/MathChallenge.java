@@ -42,12 +42,20 @@ public class MathChallenge {
 		timer = t;
 	}
 	
+	public Timer getTimer() {
+		return timer;
+	}
+	
 	public String getTime() {
 		return timer.time();
 	}
 	
 	public boolean timeIsOver() {
 		return timer.timeIsOver();
+	}
+	
+	public void start() throws InterruptedException {
+		timer.startTimer();
 	}
 	
 }
