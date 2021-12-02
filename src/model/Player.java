@@ -21,6 +21,11 @@ public class Player implements Serializable{
 		score = 0;
 	}
 	
+	public Player(String name, long score) {
+		this.name = name;
+		this.score = score;
+	}
+	
 	public void increaseScore() {
 		score += 10; 
 	}

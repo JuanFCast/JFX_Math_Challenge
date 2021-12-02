@@ -7,12 +7,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * Añadir (Para añadir cada jugador al arbol binario)			 			ya
  * Eliminar (Para borrar determinado jugador)					 			ya
  * Buscar (Para buscar un jugador especifico)								ya 
- * Retornar un arreglo con los primeros 5 jugadores
+ * Retornar un arreglo con los primeros 5 jugadores							ya
  * Retornar la posicion del jugador que esta jugando
  * Leer cada jugador del docs (.psf) que los guardara						ya
  * Guardar los jugadores que esten en el arbol binario en un doc (.psf)		ya
@@ -23,9 +25,13 @@ public class ScoreBoard {
 	
 	private String PLAYERS_SCORE_FILE = "data/PlayersScoreFile.psf";
 	private Player root;
-	
+	private List<Player> top5 = new ArrayList<Player>();
 	
 	public ScoreBoard() {
+		
+	}
+	
+	public void setPositions() {
 		
 	}
 	
@@ -135,6 +141,19 @@ public class ScoreBoard {
 		}
 	}
 	
+	public List<Player> top5() {
+		Player top = maximun();
+		for(int i=0; i<5; i++) {
+			if(top!=null) {
+				top5.add(top);
+				top = top.getUp();
+			}else {
+				top5.add(new Player("----", 0000));
+			}
+		}
+		return top5;
+	}
+	
 	public Player minimun() {
 		if(root == null) {
 			return root;
@@ -166,5 +185,7 @@ public class ScoreBoard {
 			return max(current.getRight());
 		}
 	}
+	
+	
 
 }
