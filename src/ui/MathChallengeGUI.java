@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import Thread.ExerciseThread;
+import Thread.TimerThread;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,13 +20,13 @@ import javafx.stage.Stage;
 import model.Exercise;
 import model.MathChallenge;
 import model.RandomNumber;
+import model.Timer;
 
 public class MathChallengeGUI {
 
 	//Attributes
 	private Stage mainStage;
 	private MathChallenge mathChallenge;
-	private ExerciseThread ext;
 	
 	@FXML
     private TextField Name_txtField;
@@ -45,6 +46,8 @@ public class MathChallengeGUI {
     private Label score_label;
     @FXML
     private Label nameChallenger_label;
+    @FXML
+    private Label timer_label;
 	@FXML
 	private TableView<?> tableTop;
 	@FXML
@@ -63,6 +66,7 @@ public class MathChallengeGUI {
     	if(!name.equals("")) {
     		mathChallenge = new MathChallenge(name);
         	ChallengeMenu();
+        	timer();
         	updateChallengeMenu();
     	} else {
     		printWarning("The field can't be void");
@@ -133,7 +137,7 @@ public class MathChallengeGUI {
 	}
 	
 	private void updateChallengeMenu() throws InterruptedException {
-		ext = new ExerciseThread(new Exercise(), mathChallenge);
+		ExerciseThread ext = new ExerciseThread(new Exercise(), mathChallenge);
 		ext.start();
 		ext.join();
 		nameChallenger_label.setText(mathChallenge.getChallenger().getName());
@@ -141,7 +145,6 @@ public class MathChallengeGUI {
 		nameOperator_label.setText(mathChallenge.getNameOperator());
 		exercise_Label.setText(mathChallenge.getExercise());
 		randomAnswers();
-		
 	}
 	
 	
@@ -183,6 +186,14 @@ public class MathChallengeGUI {
 			break;
 		}
 
+	}
+	
+	public void timer() throws InterruptedException {
+		TimerThread timerThread = new TimerThread(new Timer(), mathChallenge);
+		timerThread.start();
+		while(mathChallenge.timeIsOver() == false) {
+			timer_label.setText(mathChallenge.getTime());
+		}	
 	}
 	
 	

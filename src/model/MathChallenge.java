@@ -4,6 +4,7 @@ public class MathChallenge {
 
 	private Exercise exercise;
 	private Player challenger;
+	private Timer timer;
 	
 	public MathChallenge(String name) {
 		challenger = new Player(name);
@@ -35,6 +36,18 @@ public class MathChallenge {
 	
 	public long getScore() {
 		return challenger.getScore();
+	}
+	
+	public void setTimer(Timer t) {
+		timer = t;
+	}
+	
+	public String getTime() {
+		return timer.time();
+	}
+	
+	public boolean timeIsOver() {
+		return timer.timeIsOver();
 	}
 	
 }
