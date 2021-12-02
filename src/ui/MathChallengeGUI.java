@@ -191,14 +191,13 @@ public class MathChallengeGUI {
 	}
 	
 	public void startTimer(Timer t) throws InterruptedException {
-		Thread.sleep(1000);
 		TimerThread timerThread = new TimerThread(t, mathChallenge);
 		timer_label.setText(mathChallenge.getTime());
 		
 		if(!mathChallenge.timeIsOver()) {
 			timerThread.start();
 			timerThread.join();
-			startTimer(t);
+			startTimer(mathChallenge.getTimer());
 		}
 
 		

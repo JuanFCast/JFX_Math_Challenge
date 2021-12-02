@@ -3,7 +3,7 @@ package Thread;
 import model.MathChallenge;
 import model.Timer;
 
-public class TimerThread extends Thread{
+public class TimerThread extends Thread {
 
 	private Timer timer;
 	private MathChallenge mathChallenge;
@@ -14,8 +14,14 @@ public class TimerThread extends Thread{
 	}
 	
 	public void run() {
-		timer.startTimer();
-		mathChallenge.setTimer(timer);
+		try {
+			sleep(20);
+			timer.startTimer();
+			mathChallenge.setTimer(timer);
+		} catch (InterruptedException e) {
+			
+		}
+		
 	}
-	
+		
 }
