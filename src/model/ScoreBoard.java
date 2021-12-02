@@ -1,22 +1,50 @@
 package model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /*
- * Añadir (Para añadir cada jugador al arbol binario)			 ya
- * Eliminar (Para borrar determinado jugador)
- * Buscar (Para buscar un jugador especifico)					 ya 
+ * Añadir (Para añadir cada jugador al arbol binario)			 			ya
+ * Eliminar (Para borrar determinado jugador)					 			ya
+ * Buscar (Para buscar un jugador especifico)								ya 
  * Retornar un arreglo con los primeros 5 jugadores
  * Retornar la posicion del jugador que esta jugando
- * Leer cada jugador del docs que los guardara
- * Guardar los jugadores que esten en el arbol binario en un doc
+ * Leer cada jugador del docs (.psf) que los guardara						ya
+ * Guardar los jugadores que esten en el arbol binario en un doc (.psf)		ya
  * 
  * */
 
 public class ScoreBoard {
 	
+	private String PLAYERS_SCORE_FILE = "data/PlayersScoreFile.psf";
 	private Player root;
+	
 	
 	public ScoreBoard() {
 		
+	}
+	
+	public void saveData() throws IOException {
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PLAYERS_SCORE_FILE));
+		oos.writeObject(root);
+		oos.close();
+	}
+	
+	public boolean loadData() throws FileNotFoundException, IOException, ClassNotFoundException {
+		File players = new File(PLAYERS_SCORE_FILE);
+		boolean isLoaded = false;
+		if(players.exists()) {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(players));
+			root = (Player) ois.readObject();
+			ois.close();
+			isLoaded = true;
+		}
+		return isLoaded;
 	}
 	
 	public void addChallenger(Player n) {
