@@ -227,8 +227,10 @@ public class MathChallengeGUI {
 	public void updateGUI(String time) {
 		timer_label.setText(time);
 		if(mathChallenge.timeIsOver()) {
+			mathChallenge.addPlayer();
 			try {
 				openTop();
+				mathChallenge.exportPlayers();//exporta
 			} catch (IOException e) {}
 		}
 	}

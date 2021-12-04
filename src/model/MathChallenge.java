@@ -1,13 +1,25 @@
 package model;
 
+import java.io.IOException;
+
 public class MathChallenge {
 
 	private Exercise exercise;
 	private Player challenger;
 	private Timer timer;
+	private ScoreBoard scoreboard;
 	
 	public MathChallenge(String name) {
 		challenger = new Player(name);
+		scoreboard = new ScoreBoard();
+	}
+	
+	public void addPlayer() {
+		scoreboard.addChallenger(challenger);
+	}
+	
+	public void exportPlayers() throws IOException {
+		scoreboard.saveData();
 	}
 	
 	public String getExercise() {
