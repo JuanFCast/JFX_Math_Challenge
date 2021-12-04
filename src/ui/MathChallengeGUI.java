@@ -1,11 +1,10 @@
 package ui;
 
 import java.io.IOException;
-
 import javax.swing.JOptionPane;
 
 import Thread.ExerciseThread;
-import Thread.TimerThread;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,9 +66,9 @@ public class MathChallengeGUI {
     		mathChallenge = new MathChallenge(name);
         	ChallengeMenu();
         	Timer timer = new Timer();
-        	mathChallenge.setTimer(timer);
+    		mathChallenge.setTimer(timer);
         	startTimer(timer);
-        	updateChallengeMenu();
+        	updateChallengeMenu();	
     	} else {
     		printWarning("The field can't be void");
     	}
@@ -138,6 +137,17 @@ public class MathChallengeGUI {
         mainStage.show();
 	}
 	
+	private void openTop() throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("top_pane.fxml"));
+        fxmlLoader.setController(this);
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+
+        mainStage.setScene(scene);
+        mainStage.setTitle("Math Challenge");
+        mainStage.show();
+	}
+	
 	private void updateChallengeMenu() throws InterruptedException {
 		ExerciseThread ext = new ExerciseThread(new Exercise(), mathChallenge);
 		ext.start();
@@ -190,24 +200,35 @@ public class MathChallengeGUI {
 
 	}
 	
-	public void startTimer(Timer t) throws InterruptedException {
-		TimerThread timerThread = new TimerThread(t, mathChallenge);
-		timer_label.setText(mathChallenge.getTime());
+	public void startTimer(Timer timer) throws InterruptedException, IOException {
 		
-		if(!mathChallenge.timeIsOver()) {
-			timerThread.start();
-			timerThread.join();
-			startTimer(mathChallenge.getTimer());
-		}
-
+		Thread t = new Thread() {
+			public void run() {
+				for(; !mathChallenge.timeIsOver();){
+					Platform.runLater(new Thread() {
+						public void run() {
+							updateGUI(mathChallenge.getTime());
+						}
+					});
+					
+					timer.startTimer();
+					try {
+						Thread.sleep(999);
+					} catch (InterruptedException e) {}
+					
+				}
+			};
+		};
 		
-//		while(mathChallenge.timeIsOver() == false) {
-//			timer_label.setText(mathChallenge.getTime());
-//			Thread.sleep(1000);
-//			mathChallenge.start();
-//		}
+		t.start();
+		try {
+			openTop();
+		} catch (IOException e) {}
 	}
 	
+	public void updateGUI(String time) {
+		timer_label.setText(time);
+	}
 	
 	
 	

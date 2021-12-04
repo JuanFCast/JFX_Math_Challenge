@@ -26,7 +26,7 @@ public class Main extends Application{
         controller = new MathChallengeGUI();
         controller.setMainStage(primaryStage);
         try {
-			controller.LogInMenu();
+        	controller.LogInMenu();
 		} catch (IOException e) {
 			System.out.println("Ha ocurrido un error");
 		}
