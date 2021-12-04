@@ -27,7 +27,12 @@ public class ScoreBoard {
 	private Player root;
 	private List<Player> top5 = new ArrayList<Player>();
 	
-	public ScoreBoard() {
+	public ScoreBoard(){
+		try {
+			loadData();//Importar
+		} catch (ClassNotFoundException | IOException e) {
+	
+		}
 		
 	}
 	
