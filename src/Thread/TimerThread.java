@@ -1,21 +1,21 @@
 package Thread;
 
-import model.MathChallenge;
-import model.Timer;
+import javafx.scene.control.Label;
+import ui.MathChallengeGUI;
 
 public class TimerThread extends Thread{
 
-	private Timer timer;
-	private MathChallenge mathChallenge;
+	private Label timer_label;
 	
-	public TimerThread(Timer t, MathChallenge mt) {
-		timer = t;
-		mathChallenge = mt;
+	public TimerThread(Label Cronometro) {
+		timer_label = Cronometro;
 	}
 	
 	public void run() {
-		timer.startTimer();
-		mathChallenge.setTimer(timer);
+		
+
 	}
+
+	
 	
 }
