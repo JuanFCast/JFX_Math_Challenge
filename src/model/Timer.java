@@ -2,7 +2,7 @@ package model;
 
 public class Timer {
 
-	private int minutes = 0;
+	private int minutes = 1;
 	private int seconds = 50;
 	
 	
@@ -16,7 +16,7 @@ public class Timer {
 			if(seconds > 0) {
 				seconds--;
 			} else {
-				seconds = 60;
+				seconds = 59;
 				minutes--;
 			}
 		} else {
@@ -30,6 +30,15 @@ public class Timer {
 		return (minutes == 0 && seconds == 0)?true:false;
 	}
 	
+	public long getTotalSeconds() {
+		long s = seconds;
+		
+		if(minutes > 0) {
+			s += (60*minutes);
+		}
+		
+		return s;
+	}
 	
 	public String time() {
 		String time = "";
@@ -50,5 +59,6 @@ public class Timer {
 		
 		return time;
 	}
+	
 	
 }

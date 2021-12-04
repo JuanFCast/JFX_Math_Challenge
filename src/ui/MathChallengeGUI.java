@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -47,6 +48,8 @@ public class MathChallengeGUI {
     private Label nameChallenger_label;
     @FXML
     private Label timer_label;
+    @FXML
+    private ProgressBar progressbar;
 	@FXML
 	private TableView<?> tableTop;
 	@FXML
@@ -68,6 +71,7 @@ public class MathChallengeGUI {
         	Timer timer = new Timer();
     		mathChallenge.setTimer(timer);
         	startTimer(timer);
+        	progressTime();
         	updateChallengeMenu();	
     	} else {
     		printWarning("The field can't be void");
@@ -207,7 +211,7 @@ public class MathChallengeGUI {
 				for(; !mathChallenge.timeIsOver();){
 					Platform.runLater(new Thread() {
 						public void run() {
-							updateGUI(mathChallenge.getTime());
+							updateTimerLabel(mathChallenge.getTime());
 						}
 					});
 					
@@ -221,13 +225,48 @@ public class MathChallengeGUI {
 		};
 		
 		t.start();
-		try {
-			openTop();
-		} catch (IOException e) {}
 	}
 	
-	public void updateGUI(String time) {
+	public void progressTime() {
+
+		double scale = progressbar.getProgress();
+		long totalSeconds = mathChallenge.getTimer().getTotalSeconds();
+
+		double lessScale = (scale/totalSeconds);
+
+
+		Thread t = new Thread() {
+			public void run() {
+				for(; !mathChallenge.timeIsOver();){
+					try {
+						Thread.sleep(999);
+					} catch (InterruptedException e) {}
+					
+					Platform.runLater(new Thread() {
+						public void run() {
+							updateProgressBar(lessScale);
+						}
+					});
+
+				}
+			};
+		};
+
+		t.start();
+	}
+	
+	public void updateTimerLabel(String time) {
 		timer_label.setText(time);
+		if(mathChallenge.timeIsOver()) {
+			try {
+				openTop();
+			} catch (IOException e) {}
+		}
+	}
+	
+	public void updateProgressBar(Double less) {
+		double progress = (progressbar.getProgress()-less);
+		progressbar.setProgress(progress);
 	}
 	
 	
