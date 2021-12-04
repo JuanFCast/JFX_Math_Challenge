@@ -59,7 +59,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dce0e1" height="146.0" layoutX="249.0" stroke="BLACK" strokeType="INSIDE" width="451.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="38.0" layoutX="280.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="38.0" layoutX="280.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
-      <Label fx:id="timer_label" layoutX="562.0" layoutY="30.0" text="00:00">
+      <Label fx:id="timer_label" layoutX="562.0" layoutY="30.0" text="99:99">
          <font>
             <Font name="System Bold" size="42.0" />
          </font>
