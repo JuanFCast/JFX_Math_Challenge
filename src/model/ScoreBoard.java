@@ -25,12 +25,13 @@ public class ScoreBoard {
 	
 	private String PLAYERS_SCORE_FILE = "data/PlayersScoreFile.psf";
 	private Player root;
-	private Player rootName;
 	private List<Player> top5 = new ArrayList<Player>();
+	private Player orderByName;
 	
 	public ScoreBoard(){
 		try {
 			loadData();//Importar
+			saveInOtherTree();
 		} catch (ClassNotFoundException | IOException e) {}
 		
 	}
@@ -58,7 +59,7 @@ public class ScoreBoard {
 		oos.close();
 	}
 	
-	public boolean loadData() throws FileNotFoundException, IOException, ClassNotFoundException {
+	private boolean loadData() throws FileNotFoundException, IOException, ClassNotFoundException {
 		File players = new File(PLAYERS_SCORE_FILE);
 		boolean isLoaded = false;
 		if(players.exists()) {
@@ -70,25 +71,77 @@ public class ScoreBoard {
 		return isLoaded;
 	}
 	
-	public void clonePlayers() {
-		if(root!=null) {
-			clonePlayers(root);
+	private void saveInOtherTree() {
+		if(root != null) {
+			cloneInOthertree(root);
+		} else {
+			orderByName = null;
 		}
 	}
 	
-	private void clonePlayers(Player current) {
-		if(current!=null) {
-			clonePlayers(current.getLeft());
-			addChallengerByName(current);
-			clonePlayers(current.getRight());
+	private void cloneInOthertree(Player p) {
+		
+		if(p.getLeft() != null) {
+			cloneInOthertree(p.getLeft());
 		}
+		
+		addByName(p, orderByName);
+		
+		if(p.getRight() != null) {
+			cloneInOthertree(p.getRight());
+		}
+		
 	}
 	
+	private boolean addByName(Player p, Player r) {
+		boolean sentinel = false;
+		Player c = r;
+
+		while(sentinel != true) {
+			if(c == null) {
+				c = p;
+				sentinel = true;
+			} else {
+				if(p.getName().compareTo(c.getName()) < 0) {
+					if(c.getLeft() == null) {
+						c.setLeft(p);
+						p.setUp(c);
+						sentinel = true;
+					} else {
+						c = c.getLeft();
+					}
+				} else {
+					if(c.getRight() == null) {
+						c.setRight(p);
+						p.setUp(c);
+						sentinel = true;
+					} else {
+						c = c.getRight();
+					}
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	//No me esta encontrando el player
 	public void addChallenger(Player n) {
 		if(root == null) {
 			root = n;
 		} else {
-			addChallenger(n, root);
+			if(search(n.getName()) != null) {
+				Player oldSave = search(n.getName());
+				if(oldSave.getScore() < n.getScore()) {
+					remove(oldSave.getName());
+					addChallenger(n, root);
+				} else {
+					System.out.println("Aca deberia ser");
+				}
+			} else {
+				System.out.println("Se metio aca");
+				addChallenger(n, root);
+			}
 		}
 	}
 	
@@ -113,48 +166,22 @@ public class ScoreBoard {
 		}
 	}
 	
-	public void addChallengerByName(Player n) {
-		if(rootName == null) {
-			rootName = n;
-		} else {
-			addChallengerByName(n, rootName);
-		}
-	}
-	
-	
-	//estos metodos son para crear un arbol binario ordenado por nombres, con el fin de failitar la busqueda
-	private void addChallengerByName(Player n, Player r) {
-		if(n.getName().compareTo(r.getName())<=0) {
-			if(r.getLeft() != null) {
-				addChallengerByName(n, r.getLeft());
-			} else {
-				r.setLeft(n);
-				n.setUp(r);
-			}
-		} else {
-			if(r.getRight() != null) {
-				addChallengerByName(n, r.getRight());
-			} else {
-				r.setRight(n);
-				n.setUp(r);
-			}
-		}
-	}
-	
 	public Player search(String name) {
-		if(rootName == null) {
+		if(orderByName == null) {
+			System.out.println("Esto es null");
 			return null;
 		}else {
-			return search(rootName, name);
+			System.out.println(orderByName.getName());
+			return search(orderByName, name);
 		}
 	}
 	
 	private Player search(Player current, String name) {
 		if(current == null) {
 			return current;
-		}else if(current.getName().compareTo(name)==0) {
+		}else if(current.getName().compareTo(name) == 0) {
 			return current;
-		}else if(current.getName().compareTo(name)>0) {
+		}else if(current.getName().compareTo(name) > 0) {
 			return search(current.getRight(), name);
 		}else {
 			return search(current.getLeft(), name);
