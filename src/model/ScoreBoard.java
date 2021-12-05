@@ -170,7 +170,6 @@ public class ScoreBoard {
 	
 	public Player search(String name) {
 		if(orderByName == null) {
-			System.out.println("Esto es null");
 			return null;
 		}else {
 			System.out.println(orderByName.getName());

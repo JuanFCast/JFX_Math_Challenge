@@ -26,6 +26,11 @@ public class MathChallenge {
 	
 	public List<Player> topPlayers() {
 		List<Player> topPlayer = scoreboard.top5();
+		topPlayer.add(challenger);
+			try {
+					topPlayer.remove(6);
+			} catch (IndexOutOfBoundsException e) {
+			}
 		return topPlayer;
 	}
 	
