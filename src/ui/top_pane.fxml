@@ -13,9 +13,9 @@
             <Font name="System Bold" size="44.0" />
          </font>
       </Label>
-      <TableView fx:id="tableTop" layoutX="128.0" layoutY="89.0" prefHeight="391.0" prefWidth="420.0" style="-fx-background-color: #d2dac5;">
+      <TableView fx:id="tableTop" editable="true" layoutX="128.0" layoutY="89.0" prefHeight="391.0" prefWidth="420.0" style="-fx-background-color: #d2dac5;">
          <columns>
-            <TableColumn fx:id="colPosition" prefWidth="52.0" resizable="false" text="Position" />
+            <TableColumn fx:id="colPosition" prefWidth="52.0" text="Position" />
             <TableColumn fx:id="colName" prefWidth="275.0" resizable="false" text="Name" />
             <TableColumn fx:id="colScore" prefWidth="92.0" resizable="false" text="Score" />
          </columns>

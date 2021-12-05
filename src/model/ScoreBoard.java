@@ -26,9 +26,11 @@ public class ScoreBoard {
 	private String PLAYERS_SCORE_FILE = "data/PlayersScoreFile.psf";
 	private Player root;
 	private Player rootName;
+	private int position;
 	private List<Player> top5 = new ArrayList<Player>();
 	
 	public ScoreBoard(){
+		position = 1;
 		try {
 			loadData();//Importar
 		} catch (ClassNotFoundException | IOException e) {
@@ -41,16 +43,16 @@ public class ScoreBoard {
 		if(root==null) {
 			
 		}else {
-			positions(root, 1);
+			positions(root);
 		}
 	}
 	
-	private void positions(Player p, int i) {
+	private void positions(Player p) {
 		if(p!=null) {
-			positions(p.getRight(), i);
-			p.setPosition(i);
-			i++;
-			positions(p.getLeft(), i);
+			positions(p.getRight());
+			p.setPosition(position);
+			position++;
+			positions(p.getLeft());
 		}
 	}
 
@@ -78,39 +80,41 @@ public class ScoreBoard {
 		}
 	}
 	
-	private void clonePlayers(Player current) {
+	private boolean clonePlayers(Player current) {
 		if(current!=null) {
 			clonePlayers(current.getLeft());
 			addChallengerByName(current);
 			clonePlayers(current.getRight());
 		}
+		return true;
 	}
 	
 	public void addChallenger(Player n) {
 		if(root == null) {
 			root = n;
-		} else {
+		}else {
 			addChallenger(n, root);
 		}
 	}
 	
-	
 	//Para este caso manejaremos puntajes menores o iguales asignados a la izquierda, 
 	//y puntajes mayores para la derecha
-	private void addChallenger(Player n, Player r) {
+	private boolean addChallenger(Player n, Player r) {
 		if(n.getScore() <= r.getScore()) {
 			if(r.getLeft() != null) {
-				addChallenger(n, r.getLeft());
-			} else {
+				return addChallenger(n, r.getLeft());
+			}else {
 				r.setLeft(n);
 				n.setUp(r);
+				return true;
 			}
-		} else {
+		}else {
 			if(r.getRight() != null) {
-				addChallenger(n, r.getRight());
-			} else {
+				return addChallenger(n, r.getRight());
+			}else {
 				r.setRight(n);
 				n.setUp(r);
+				return true;
 			}
 		}
 	}
@@ -118,29 +122,32 @@ public class ScoreBoard {
 	public void addChallengerByName(Player n) {
 		if(rootName == null) {
 			rootName = n;
-		} else {
+		}else {
 			addChallengerByName(n, rootName);
 		}
 	}
 	
 	
-	//estos metodos son para crear un arbol binario ordenado por nombres, con el fin de failitar la busqueda
-	private void addChallengerByName(Player n, Player r) {
-		if(n.getName().compareTo(r.getName())<=0) {
+	//estos metodos son para crear un arbol binario ordenado por nombres, con el fin de facilitar la busqueda
+	private boolean addChallengerByName(Player n, Player r) {
+		if(n.getName().compareTo(r.getName())<0) {
 			if(r.getLeft() != null) {
-				addChallengerByName(n, r.getLeft());
-			} else {
+				return addChallengerByName(n, r.getLeft());
+			}else {
 				r.setLeft(n);
 				n.setUp(r);
+				return true;
 			}
-		} else {
+		}else if (n.getName().compareTo(r.getName())>0) {
 			if(r.getRight() != null) {
-				addChallengerByName(n, r.getRight());
-			} else {
+				return addChallengerByName(n, r.getRight());
+			}else {
 				r.setRight(n);
 				n.setUp(r);
+				return true;
 			}
 		}
+		return true;
 	}
 	
 	public Player search(String name) {
@@ -218,7 +225,7 @@ public class ScoreBoard {
 	public Player minimun() {
 		if(root == null) {
 			return root;
-		} else {
+		}else {
 			return min(root);
 		}
 	}
@@ -234,7 +241,7 @@ public class ScoreBoard {
 	public Player maximun() {
 		if(root == null) {
 			return root;
-		} else {
+		}else {
 			return max(root);
 		}
 	}
