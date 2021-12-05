@@ -5,6 +5,8 @@ import javax.swing.JOptionPane;
 
 import Thread.ExerciseThread;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +18,11 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Exercise;
 import model.MathChallenge;
+import model.Player;
 import model.RandomNumber;
 import model.Timer;
 
@@ -50,10 +54,16 @@ public class MathChallengeGUI {
     private Label timer_label;
     @FXML
     private ProgressBar progressbar;
+    
+    private ObservableList<Player> observableListPlayers;
 	@FXML
-	private TableView<?> tableTop;
+	private TableView<Player> tableTop;
 	@FXML
-	private TableColumn<?, ?> colNickname;
+    private TableColumn<Player, String> colName;
+    @FXML
+    private TableColumn<Player, Integer> colPosition;
+    @FXML
+    private TableColumn<Player, Long> colScore;
 
 	//Constructor void
 	public MathChallengeGUI() {
@@ -147,9 +157,20 @@ public class MathChallengeGUI {
 		Scene scene = new Scene(root);
 
 		mainStage.setScene(scene);
-		mainStage.setTitle("Math Challenge");
+		mainStage.setTitle("Tabla de Posiciones");
 		mainStage.show();
+		
+		intializeTableViewPlayers();
 	}
+	
+	public void intializeTableViewPlayers() {
+		observableListPlayers = FXCollections.observableArrayList(mathChallenge.topPlayers());
+    	
+    	tableTop.setItems(observableListPlayers);
+    	colName.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
+    	colPosition.setCellValueFactory(new PropertyValueFactory<Player, Integer>("position"));
+    	colScore.setCellValueFactory(new PropertyValueFactory<Player, Long>("score"));
+    }
 
 	private void updateChallengeMenu() throws InterruptedException {
 		ExerciseThread ext = new ExerciseThread(new Exercise(), mathChallenge);
@@ -203,6 +224,7 @@ public class MathChallengeGUI {
 
 	}
 
+
 	public void startTimer(Timer timer) throws InterruptedException, IOException {
 
 		Thread t = new Thread() {
@@ -210,7 +232,7 @@ public class MathChallengeGUI {
 				for(; !mathChallenge.timeIsOver();){
 					Platform.runLater(new Thread() {
 						public void run() {
-							updateTimerLabel(mathChallenge.getTime());
+							updateTimerLabel(timer.time());
 						}
 					});
 
@@ -224,6 +246,7 @@ public class MathChallengeGUI {
 		};
 
 		t.start();
+
 	}
 	
 	public void progressTime() {
@@ -256,11 +279,15 @@ public class MathChallengeGUI {
 	
 	public void updateTimerLabel(String time) {
 		timer_label.setText(time);
-		if(mathChallenge.timeIsOver()) {
-			try {
-				openTop();
-			} catch (IOException e) {}
-		}
+        if(mathChallenge.timeIsOver()) {
+            mathChallenge.addPlayer();
+            try {
+                openTop();
+                mathChallenge.exportPlayers();//exporta
+            } catch (IOException e) {
+            	System.out.println("No se pudo abrir el pane");
+            }
+        }
 	}
 	
 	public void updateProgressBar(Double less) {

@@ -25,6 +25,7 @@ public class ScoreBoard {
 	
 	private String PLAYERS_SCORE_FILE = "data/PlayersScoreFile.psf";
 	private Player root;
+	private Player rootName;
 	private List<Player> top5 = new ArrayList<Player>();
 	
 	public ScoreBoard(){
@@ -35,9 +36,22 @@ public class ScoreBoard {
 	}
 	
 	public void setPositions() {
-		
+		if(root==null) {
+			
+		}else {
+			positions(root, 1);
+		}
 	}
 	
+	private void positions(Player p, int i) {
+		if(p!=null) {
+			positions(p.getRight(), i);
+			p.setPosition(i);
+			i++;
+			positions(p.getLeft(), i);
+		}
+	}
+
 	public void saveData() throws IOException {
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PLAYERS_SCORE_FILE));
 		oos.writeObject(root);
@@ -54,6 +68,20 @@ public class ScoreBoard {
 			isLoaded = true;
 		}
 		return isLoaded;
+	}
+	
+	public void clonePlayers() {
+		if(root!=null) {
+			clonePlayers(root);
+		}
+	}
+	
+	private void clonePlayers(Player current) {
+		if(current!=null) {
+			clonePlayers(current.getLeft());
+			addChallengerByName(current);
+			clonePlayers(current.getRight());
+		}
 	}
 	
 	public void addChallenger(Player n) {
@@ -85,28 +113,56 @@ public class ScoreBoard {
 		}
 	}
 	
-	public Player search(long score) {
-		if(root == null) {
+	public void addChallengerByName(Player n) {
+		if(rootName == null) {
+			rootName = n;
+		} else {
+			addChallengerByName(n, rootName);
+		}
+	}
+	
+	
+	//estos metodos son para crear un arbol binario ordenado por nombres, con el fin de failitar la busqueda
+	private void addChallengerByName(Player n, Player r) {
+		if(n.getName().compareTo(r.getName())<=0) {
+			if(r.getLeft() != null) {
+				addChallengerByName(n, r.getLeft());
+			} else {
+				r.setLeft(n);
+				n.setUp(r);
+			}
+		} else {
+			if(r.getRight() != null) {
+				addChallengerByName(n, r.getRight());
+			} else {
+				r.setRight(n);
+				n.setUp(r);
+			}
+		}
+	}
+	
+	public Player search(String name) {
+		if(rootName == null) {
 			return null;
 		}else {
-			return search(root, score);
+			return search(rootName, name);
 		}
 	}
 	
-	private Player search(Player current, long score) {
+	private Player search(Player current, String name) {
 		if(current == null) {
 			return current;
-		}else if(current.getScore() == score) {
+		}else if(current.getName().compareTo(name)==0) {
 			return current;
-		}else if(score > current.getScore()) {
-			return search(current.getRight(), score);
+		}else if(current.getName().compareTo(name)>0) {
+			return search(current.getRight(), name);
 		}else {
-			return search(current.getLeft(), score);
+			return search(current.getLeft(), name);
 		}
 	}
 	
-	public void remove(long score) {
-		Player pRem = search(score);
+	public void remove(String name) {
+		Player pRem = search(name);
 		removePlayer(pRem);
 	}
 	

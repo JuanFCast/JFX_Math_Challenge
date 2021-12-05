@@ -1,6 +1,7 @@
 package model;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MathChallenge {
 
@@ -19,7 +20,15 @@ public class MathChallenge {
 	}
 	
 	public void exportPlayers() throws IOException {
+		scoreboard.setPositions();
+		scoreboard.clonePlayers();
 		scoreboard.saveData();
+	}
+	
+	public List<Player> topPlayers() {
+		List<Player> topPlayer = scoreboard.top5();
+		topPlayer.add(challenger);
+		return topPlayer;
 	}
 	
 	public String getExercise() {
