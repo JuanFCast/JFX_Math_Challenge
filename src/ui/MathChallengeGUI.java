@@ -27,13 +27,13 @@ public class MathChallengeGUI {
 	//Attributes
 	private Stage mainStage;
 	private MathChallenge mathChallenge;
-	
+
 	@FXML
-    private TextField Name_txtField;
+	private TextField Name_txtField;
 	@FXML
-    private Label exercise_Label;
+	private Label exercise_Label;
 	@FXML
-    private Label nameOperator_label;
+	private Label nameOperator_label;
 	@FXML
 	private Button answer1_button;
 	@FXML
@@ -54,12 +54,11 @@ public class MathChallengeGUI {
 	private TableView<?> tableTop;
 	@FXML
 	private TableColumn<?, ?> colNickname;
-	
-	
-	public MathChallengeGUI() {
-		
-	}
 
+	//Constructor void
+	public MathChallengeGUI() {
+
+	}
 	
 	@FXML
     public void startChallenge(ActionEvent event) throws IOException, InterruptedException {
@@ -86,7 +85,7 @@ public class MathChallengeGUI {
 			mathChallenge.getChallenger().decreaseScore();
 		}
 		updateChallengeMenu();
-		
+
 	}
 
 	@FXML
@@ -118,40 +117,40 @@ public class MathChallengeGUI {
 		}
 		updateChallengeMenu();
 	}
-	
+
 	public void LogInMenu() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login_pane.fxml"));
-        fxmlLoader.setController(this);
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
+		fxmlLoader.setController(this);
+		Parent root = fxmlLoader.load();
+		Scene scene = new Scene(root);
 
-        mainStage.setScene(scene);
-        mainStage.setTitle("Modulo de Inicio");
-        mainStage.show();
+		mainStage.setScene(scene);
+		mainStage.setTitle("Modulo de Inicio");
+		mainStage.show();
 	}
-	
+
 	private void ChallengeMenu() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("challenge_pane.fxml"));
-        fxmlLoader.setController(this);
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
+		fxmlLoader.setController(this);
+		Parent root = fxmlLoader.load();
+		Scene scene = new Scene(root);
 
-        mainStage.setScene(scene);
-        mainStage.setTitle("Math Challenge");
-        mainStage.show();
+		mainStage.setScene(scene);
+		mainStage.setTitle("Math Challenge");
+		mainStage.show();
 	}
-	
+
 	private void openTop() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("top_pane.fxml"));
-        fxmlLoader.setController(this);
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
+		fxmlLoader.setController(this);
+		Parent root = fxmlLoader.load();
+		Scene scene = new Scene(root);
 
-        mainStage.setScene(scene);
-        mainStage.setTitle("Math Challenge");
-        mainStage.show();
+		mainStage.setScene(scene);
+		mainStage.setTitle("Math Challenge");
+		mainStage.show();
 	}
-	
+
 	private void updateChallengeMenu() throws InterruptedException {
 		ExerciseThread ext = new ExerciseThread(new Exercise(), mathChallenge);
 		ext.start();
@@ -162,10 +161,10 @@ public class MathChallengeGUI {
 		exercise_Label.setText(mathChallenge.getExercise());
 		randomAnswers();
 	}
-	
-	
+
+
 	private void randomAnswers() {
-		
+
 		RandomNumber num = new RandomNumber(1,4);
 		int r = num.getRandomNumber();
 
@@ -176,21 +175,21 @@ public class MathChallengeGUI {
 			answer3_button.setText(mathChallenge.getFakeAnswer()[1]);
 			answer4_button.setText(mathChallenge.getFakeAnswer()[2]);
 			break;
-		
+
 		case 2:
 			answer1_button.setText(mathChallenge.getFakeAnswer()[0]);
 			answer2_button.setText(mathChallenge.getAnswer());
 			answer3_button.setText(mathChallenge.getFakeAnswer()[1]);
 			answer4_button.setText(mathChallenge.getFakeAnswer()[2]);
 			break;
-		
+
 		case 3:
 			answer1_button.setText(mathChallenge.getFakeAnswer()[0]);
 			answer2_button.setText(mathChallenge.getFakeAnswer()[1]);
 			answer3_button.setText(mathChallenge.getAnswer());
 			answer4_button.setText(mathChallenge.getFakeAnswer()[2]);
 			break;
-			
+
 		case 4:
 			answer1_button.setText(mathChallenge.getFakeAnswer()[0]);
 			answer2_button.setText(mathChallenge.getFakeAnswer()[1]);
@@ -203,9 +202,9 @@ public class MathChallengeGUI {
 		}
 
 	}
-	
+
 	public void startTimer(Timer timer) throws InterruptedException, IOException {
-		
+
 		Thread t = new Thread() {
 			public void run() {
 				for(; !mathChallenge.timeIsOver();){
@@ -214,16 +213,16 @@ public class MathChallengeGUI {
 							updateTimerLabel(mathChallenge.getTime());
 						}
 					});
-					
+
 					timer.startTimer();
 					try {
 						Thread.sleep(999);
 					} catch (InterruptedException e) {}
-					
+
 				}
 			};
 		};
-		
+
 		t.start();
 	}
 	
@@ -267,18 +266,18 @@ public class MathChallengeGUI {
 	public void updateProgressBar(Double less) {
 		double progress = (progressbar.getProgress()-less);
 		progressbar.setProgress(progress);
+
 	}
-	
-	
-	
+
+
 	//Getters & Setters
 	public void setMainStage(Stage mainStage) {
 		this.mainStage = mainStage;
 	}
-	
+
 	//Reports
 	public void printWarning(String message) {
-    	JOptionPane.showMessageDialog(null, message);
-    }
+		JOptionPane.showMessageDialog(null, message);
+	}
 
 }
