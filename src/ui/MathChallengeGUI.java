@@ -160,7 +160,7 @@ public class MathChallengeGUI {
 		mainStage.setTitle("Math Challenge");
 		mainStage.show();
 		
-		//intializeTableViewPlayers();
+		intializeTableViewPlayers();
 	}
 	
 	public void intializeTableViewPlayers() {
