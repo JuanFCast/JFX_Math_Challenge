@@ -67,7 +67,7 @@ public class MathChallengeGUI {
 
 	//Constructor void
 	public MathChallengeGUI() {
-
+		//Un mensajito para que no este solito
 	}
 	
 	@FXML
@@ -157,7 +157,7 @@ public class MathChallengeGUI {
 		Scene scene = new Scene(root);
 
 		mainStage.setScene(scene);
-		mainStage.setTitle("Math Challenge");
+		mainStage.setTitle("Tabla de Posiciones");
 		mainStage.show();
 		
 		intializeTableViewPlayers();
@@ -232,7 +232,7 @@ public class MathChallengeGUI {
 				for(; !mathChallenge.timeIsOver();){
 					Platform.runLater(new Thread() {
 						public void run() {
-							updateTimerLabel(mathChallenge.getTime());
+							updateTimerLabel(timer.time());
 						}
 					});
 
@@ -284,7 +284,9 @@ public class MathChallengeGUI {
             try {
                 openTop();
                 mathChallenge.exportPlayers();//exporta
-            } catch (IOException e) {}
+            } catch (IOException e) {
+            	System.out.println("No se pudo abrir el pane");
+            }
         }
 	}
 	

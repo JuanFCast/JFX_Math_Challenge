@@ -20,14 +20,12 @@ public class MathChallenge {
 	}
 	
 	public void exportPlayers() throws IOException {
-		//scoreboard.setPositions();
-		scoreboard.clonePlayers();
+		scoreboard.setPositions();
 		scoreboard.saveData();
 	}
 	
 	public List<Player> topPlayers() {
 		List<Player> topPlayer = scoreboard.top5();
-		topPlayer.add(challenger);
 		return topPlayer;
 	}
 	
