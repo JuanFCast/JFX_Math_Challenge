@@ -258,11 +258,13 @@ public class MathChallengeGUI {
 	
 	public void updateTimerLabel(String time) {
 		timer_label.setText(time);
-		if(mathChallenge.timeIsOver()) {
-			try {
-				openTop();
-			} catch (IOException e) {}
-		}
+        if(mathChallenge.timeIsOver()) {
+            mathChallenge.addPlayer();
+            try {
+                openTop();
+                mathChallenge.exportPlayers();//exporta
+            } catch (IOException e) {}
+        }
 	}
 	
 	public void updateProgressBar(Double less) {

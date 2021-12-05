@@ -19,6 +19,8 @@ public class MathChallenge {
 	}
 	
 	public void exportPlayers() throws IOException {
+		scoreboard.setPositions();
+		scoreboard.clonePlayers();
 		scoreboard.saveData();
 	}
 	
