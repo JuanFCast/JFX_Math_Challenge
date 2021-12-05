@@ -30,9 +30,7 @@ public class ScoreBoard {
 	public ScoreBoard(){
 		try {
 			loadData();//Importar
-		} catch (ClassNotFoundException | IOException e) {
-	
-		}
+		} catch (ClassNotFoundException | IOException e) {}
 		
 	}
 	

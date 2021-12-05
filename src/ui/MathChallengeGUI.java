@@ -57,7 +57,7 @@ public class MathChallengeGUI {
 
 	//Constructor void
 	public MathChallengeGUI() {
-
+		//Un mensajito para que no este solito
 	}
 	
 	@FXML
