@@ -37,9 +37,22 @@ public class ScoreBoard {
 	}
 	
 	public void setPositions() {
-		
+		if(root==null) {
+			
+		}else {
+			positions(root, 1);
+		}
 	}
 	
+	private void positions(Player p, int i) {
+		if(p!=null) {
+			positions(p.getRight(), i);
+			p.setPosition(i);
+			i++;
+			positions(p.getLeft(), i);
+		}
+	}
+
 	public void saveData() throws IOException {
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PLAYERS_SCORE_FILE));
 		oos.writeObject(root);
@@ -87,28 +100,20 @@ public class ScoreBoard {
 		}
 	}
 	
-	public Player search(long score) {
+	public Player search(String name) {
 		if(root == null) {
 			return null;
 		}else {
-			return search(root, score);
+			return search(root, name);
 		}
 	}
 	
-	private Player search(Player current, long score) {
-		if(current == null) {
-			return current;
-		}else if(current.getScore() == score) {
-			return current;
-		}else if(score > current.getScore()) {
-			return search(current.getRight(), score);
-		}else {
-			return search(current.getLeft(), score);
-		}
+	private Player search(Player current, String name) {
+		return null;//falta por terminar
 	}
 	
-	public void remove(long score) {
-		Player pRem = search(score);
+	public void remove(String name) {
+		Player pRem = search(name);
 		removePlayer(pRem);
 	}
 	
