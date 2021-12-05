@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,38 +43,40 @@ public class MathChallengeGUI {
 	@FXML
 	private Button answer4_button;
 	@FXML
-	private Label score_label;
-	@FXML
-	private Label nameChallenger_label;
-	@FXML
-	private Label timer_label;
+    private Label score_label;
+    @FXML
+    private Label nameChallenger_label;
+    @FXML
+    private Label timer_label;
+    @FXML
+    private ProgressBar progressbar;
 	@FXML
 	private TableView<?> tableTop;
 	@FXML
 	private TableColumn<?, ?> colNickname;
 
-
+	//Constructor void
 	public MathChallengeGUI() {
 
 	}
-
-
+	
 	@FXML
-	public void startChallenge(ActionEvent event) throws IOException, InterruptedException {
-		String name = Name_txtField.getText();
-
-		if(!name.equals("")) {
-			mathChallenge = new MathChallenge(name);
-			ChallengeMenu();
-			Timer timer = new Timer();
-			mathChallenge.setTimer(timer);
-			startTimer(timer);
-			updateChallengeMenu();	
-		} else {
-			printWarning("The field can't be void");
-		}
-	}
-
+    public void startChallenge(ActionEvent event) throws IOException, InterruptedException {
+    	String name = Name_txtField.getText();
+    	
+    	if(!name.equals("")) {
+    		mathChallenge = new MathChallenge(name);
+        	ChallengeMenu();
+        	Timer timer = new Timer();
+    		mathChallenge.setTimer(timer);
+        	startTimer(timer);
+        	progressTime();
+        	updateChallengeMenu();	
+    	} else {
+    		printWarning("The field can't be void");
+    	}
+    }
+	
 	@FXML
 	public void Answer1_Pressed(ActionEvent event) throws InterruptedException {
 		if (answer1_button.getText().equals(mathChallenge.getAnswer())) {
@@ -208,7 +211,7 @@ public class MathChallengeGUI {
 				for(; !mathChallenge.timeIsOver();){
 					Platform.runLater(new Thread() {
 						public void run() {
-							updateGUI(mathChallenge.getTime());
+							updateTimerLabel(mathChallenge.getTime());
 						}
 					});
 
@@ -223,20 +226,50 @@ public class MathChallengeGUI {
 
 		t.start();
 
-
 	}
+	
+	public void progressTime() {
 
-	public void updateGUI(String time) {
+		double scale = progressbar.getProgress();
+		long totalSeconds = mathChallenge.getTimer().getTotalSeconds();
+
+		double lessScale = (scale/totalSeconds);
+
+
+		Thread t = new Thread() {
+			public void run() {
+				for(; !mathChallenge.timeIsOver();){
+					try {
+						Thread.sleep(999);
+					} catch (InterruptedException e) {}
+					
+					Platform.runLater(new Thread() {
+						public void run() {
+							updateProgressBar(lessScale);
+						}
+					});
+
+				}
+			};
+		};
+
+		t.start();
+	}
+	
+	public void updateTimerLabel(String time) {
 		timer_label.setText(time);
 		if(mathChallenge.timeIsOver()) {
-			mathChallenge.addPlayer();
 			try {
 				openTop();
-				mathChallenge.exportPlayers();//exporta
 			} catch (IOException e) {}
 		}
 	}
+	
+	public void updateProgressBar(Double less) {
+		double progress = (progressbar.getProgress()-less);
+		progressbar.setProgress(progress);
 
+	}
 
 
 	//Getters & Setters
