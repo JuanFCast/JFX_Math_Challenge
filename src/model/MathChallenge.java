@@ -10,9 +10,12 @@ public class MathChallenge {
 	private Timer timer;
 	private ScoreBoard scoreboard;
 	
-	public MathChallenge(String name) {
-		challenger = new Player(name);
+	public MathChallenge() {
 		scoreboard = new ScoreBoard();
+	}
+	
+	public void startChallenge(String name) {
+		challenger = new Player(name);
 	}
 	
 	public void addPlayer() {
@@ -26,12 +29,24 @@ public class MathChallenge {
 	
 	public List<Player> topPlayers() {
 		List<Player> topPlayer = scoreboard.top5();
-		topPlayer.add(challenger);
-			try {
-					topPlayer.remove(6);
-			} catch (IndexOutOfBoundsException e) {
-			}
+		if (challenger != null) {
+			topPlayer.add(challenger);
+		}
+
+		try {
+			topPlayer.remove(6);
+		} catch (IndexOutOfBoundsException e) {
+		}
 		return topPlayer;
+	}
+	
+	public void deleteChallenger(){
+		scoreboard.removePlayer(challenger);
+	}
+	
+	public String searchChallenger(String name) {
+		Player p = scoreboard.search(name);
+		return p.toString();
 	}
 	
 	public String getExercise() {

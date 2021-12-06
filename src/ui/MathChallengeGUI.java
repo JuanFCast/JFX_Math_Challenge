@@ -31,6 +31,7 @@ public class MathChallengeGUI {
 	//Attributes
 	private Stage mainStage;
 	private MathChallenge mathChallenge;
+	private ObservableList<Player> observableListPlayers;
 
 	@FXML
 	private TextField Name_txtField;
@@ -54,8 +55,6 @@ public class MathChallengeGUI {
     private Label timer_label;
     @FXML
     private ProgressBar progressbar;
-    
-    private ObservableList<Player> observableListPlayers;
 	@FXML
 	private TableView<Player> tableTop;
 	@FXML
@@ -64,10 +63,18 @@ public class MathChallengeGUI {
     private TableColumn<Player, Integer> colPosition;
     @FXML
     private TableColumn<Player, Long> colScore;
+    @FXML
+    private TextField name_to_search;
+    @FXML
+    private Label searchStructure;
+
+   
+    
+
 
 	//Constructor void
 	public MathChallengeGUI() {
-		//Un mensajito para que no este solito
+		mathChallenge = new MathChallenge();
 	}
 	
 	@FXML
@@ -75,7 +82,7 @@ public class MathChallengeGUI {
     	String name = Name_txtField.getText();
     	
     	if(!name.equals("")) {
-    		mathChallenge = new MathChallenge(name);
+    		mathChallenge.startChallenge(name);
         	ChallengeMenu();
         	Timer timer = new Timer();
     		mathChallenge.setTimer(timer);
@@ -126,6 +133,32 @@ public class MathChallengeGUI {
 			mathChallenge.getChallenger().decreaseScore();
 		}
 		updateChallengeMenu();
+	}
+	
+	@FXML
+	public void deletePlayer(ActionEvent event) {
+		/*
+		mathChallenge.deleteChallenger();
+		try {
+			openTop();
+			mathChallenge.exportPlayers();//exportar
+		} catch (IOException e) {
+			
+		}
+		*/
+		
+	}
+
+	@FXML
+	public void searchPlayer(ActionEvent event) {
+		String name = "";
+		String answer = "";
+		
+		name = name_to_search.getText();
+		answer = mathChallenge.searchChallenger(name);
+		
+		searchStructure.setText(answer);
+		
 	}
 
 	public void LogInMenu() throws IOException {
@@ -295,6 +328,8 @@ public class MathChallengeGUI {
 		progressbar.setProgress(progress);
 
 	}
+	
+	
 
 
 	//Getters & Setters
@@ -306,5 +341,8 @@ public class MathChallengeGUI {
 	public void printWarning(String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
+	
+	
+	
 
 }

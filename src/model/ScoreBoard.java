@@ -33,9 +33,8 @@ public class ScoreBoard {
 		position = 1;
 		try {
 			loadData();//Importar
-			saveInOtherTree();
 		} catch (ClassNotFoundException | IOException e) {}
-		
+		saveInOtherTree();
 	}
 	
 	public void setPositions() {
@@ -97,28 +96,28 @@ public class ScoreBoard {
 	
 	private boolean addByName(Player p, Player r) {
 		boolean sentinel = false;
-		Player c = r;
+		Player current = r;
 
 		while(sentinel != true) {
-			if(c == null) {
-				c = p;
+			if(current == null) {
+				current = p;
 				sentinel = true;
 			} else {
-				if(p.getName().compareTo(c.getName()) < 0) {
-					if(c.getLeft() == null) {
-						c.setLeft(p);
-						p.setUp(c);
+				if(p.getName().compareTo(current.getName()) < 0) {
+					if(current.getLeft() == null) {
+						current.setLeft(p);
+						p.setUp(current);
 						sentinel = true;
 					} else {
-						c = c.getLeft();
+						current = current.getLeft();
 					}
 				} else {
-					if(c.getRight() == null) {
-						c.setRight(p);
-						p.setUp(c);
+					if(current.getRight() == null) {
+						current.setRight(p);
+						p.setUp(current);
 						sentinel = true;
 					} else {
-						c = c.getRight();
+						current = current.getRight();
 					}
 				}
 			}
@@ -135,7 +134,7 @@ public class ScoreBoard {
 			if(search(n.getName()) != null) {
 				Player oldSave = search(n.getName());
 				if(oldSave.getScore() < n.getScore()) {
-					remove(oldSave.getName());
+					removePlayer(oldSave);
 					addChallenger(n, root);
 				} else {
 					
@@ -144,6 +143,9 @@ public class ScoreBoard {
 				addChallenger(n, root);
 			}
 		}
+		
+		orderByName = null;
+		saveInOtherTree();
 	}
 	
 	//Para este caso manejaremos puntajes menores o iguales asignados a la izquierda, 
@@ -170,6 +172,7 @@ public class ScoreBoard {
 	
 	public Player search(String name) {
 		if(orderByName == null) {
+			System.out.println("orderByName es null");
 			return null;
 		}else {
 			System.out.println(orderByName.getName());
@@ -189,12 +192,9 @@ public class ScoreBoard {
 		}
 	}
 	
-	public void remove(String name) {
-		Player pRem = search(name);
-		removePlayer(pRem);
-	}
 	
-	private void removePlayer(Player rem) {
+	
+	public void removePlayer(Player rem) {
 		if(rem != null) {
 			if(rem.getLeft() == null && rem.getRight() == null) { // CASO 1 el nodo es una hoja
 				if(rem == root) {			// el arbol solo tiene un elemento
