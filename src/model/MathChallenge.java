@@ -37,12 +37,17 @@ public class MathChallenge {
 	
 	public void addInArray() {
 		List<Player> top = topPlayers();
-		top5[0] = top.get(0);
-		top5[1] = top.get(1);
-		top5[2] = top.get(2);
-		top5[3] = top.get(3);
-		top5[4] = top.get(4);
-		top5[5] = top.get(5);
+		
+		try {
+			top5[0] = top.get(0);
+			top5[1] = top.get(1);
+			top5[2] = top.get(2);
+			top5[3] = top.get(3);
+			top5[4] = top.get(4);
+			top5[5] = top.get(5);
+		} catch(IndexOutOfBoundsException e) {
+			
+		}
 	}
 	
 	private List<Player> topPlayers() {
@@ -103,7 +108,6 @@ public class MathChallenge {
 	public boolean timeIsOver() {
 		return timer.timeIsOver();
 	}
-	
 
 	public Player[] getTop5() {
 		return top5;

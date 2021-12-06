@@ -10,17 +10,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Añadir (Para añadir cada jugador al arbol binario)			 			ya
- * Eliminar (Para borrar determinado jugador)					 			ya
- * Buscar (Para buscar un jugador especifico)								ya 
- * Retornar un arreglo con los primeros 5 jugadores							ya
- * Retornar la posicion del jugador que esta jugando
- * Leer cada jugador del docs (.psf) que los guardara						ya
- * Guardar los jugadores que esten en el arbol binario en un doc (.psf)		ya
- * 
- * */
-
 public class ScoreBoard {
 	
 	private String PLAYERS_SCORE_FILE = "data/PlayersScoreFile.psf";
@@ -172,7 +161,6 @@ public class ScoreBoard {
 	
 	public Player search(String name) {
 		if(orderByName == null) {
-			System.out.println("orderByName es null");
 			return null;
 		}else {
 			return search(orderByName, name);
