@@ -2,8 +2,8 @@ package model;
 
 public class Timer {
 
-	private int minutes = 0;
-	private int seconds = 10;
+	private int minutes = 1;
+	private int seconds = 1;
 	
 	
 	public Timer() {
