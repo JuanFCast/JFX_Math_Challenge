@@ -172,7 +172,6 @@ public class ScoreBoard {
 		if(orderByName == null) {
 			return null;
 		}else {
-			System.out.println(orderByName.getName());
 			return search(orderByName, name);
 		}
 	}

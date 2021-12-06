@@ -28,6 +28,7 @@ public class MathChallenge {
 		List<Player> topPlayer = scoreboard.top5();
 		topPlayer.add(challenger);
 			try {
+				//por alguna estraña razon, aveces al añadir al jugador actual se agrega 2 veces
 					topPlayer.remove(6);
 			} catch (IndexOutOfBoundsException e) {
 			}
