@@ -1,6 +1,8 @@
 package model;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MathChallenge {
@@ -9,6 +11,7 @@ public class MathChallenge {
 	private Player challenger;
 	private Timer timer;
 	private ScoreBoard scoreboard;
+	private Player[] top5 = new Player[6];
 	
 	public MathChallenge(String name) {
 		challenger = new Player(name);
@@ -24,15 +27,41 @@ public class MathChallenge {
 		scoreboard.saveData();
 	}
 	
-	public List<Player> topPlayers() {
+	public List<Player> top5Players() {
+		ArrayList<Player> sublist = new ArrayList<Player>(Arrays.asList(top5));
+		return sublist;
+	}
+	
+	public void addInArray() {
+		List<Player> top = topPlayers();
+		top5[0] = top.get(0);
+		top5[1] = top.get(1);
+		top5[2] = top.get(2);
+		top5[3] = top.get(3);
+		top5[4] = top.get(4);
+		top5[5] = top.get(5);
+	}
+	
+	private List<Player> topPlayers() {
 		List<Player> topPlayer = scoreboard.top5();
-		topPlayer.add(challenger);
-			try {
-				//por alguna estraña razon, aveces al añadir al jugador actual se agrega 2 veces
-					topPlayer.remove(6);
-			} catch (IndexOutOfBoundsException e) {
-			}
+
+		if (challenger != null) {
+			topPlayer.add(challenger);
+		}
+
+		try {
+			topPlayer.remove(6);
+		} catch (IndexOutOfBoundsException e) {
+		}
 		return topPlayer;
+	}
+	
+	public void deleteChallenger(){
+		scoreboard.removePlayer(challenger);
+	}
+	
+	public String searchChallenger(String name) {
+		return scoreboard.search(name).toString();
 	}
 	
 	public String getExercise() {
@@ -81,6 +110,10 @@ public class MathChallenge {
 	
 	public void start() throws InterruptedException {
 		timer.startTimer();
+	}
+
+	public Player[] getTop5() {
+		return top5;
 	}
 	
 }

@@ -135,7 +135,7 @@ public class ScoreBoard {
 			if(search(n.getName()) != null) {
 				Player oldSave = search(n.getName());
 				if(oldSave.getScore() < n.getScore()) {
-					remove(oldSave.getName());
+					removePlayer(oldSave);
 					addChallenger(n, root);
 				} else {
 					
@@ -188,12 +188,9 @@ public class ScoreBoard {
 		}
 	}
 	
-	public void remove(String name) {
-		Player pRem = search(name);
-		removePlayer(pRem);
-	}
 	
-	private void removePlayer(Player rem) {
+	
+	public void removePlayer(Player rem) {
 		if(rem != null) {
 			if(rem.getLeft() == null && rem.getRight() == null) { // CASO 1 el nodo es una hoja
 				if(rem == root) {			// el arbol solo tiene un elemento
