@@ -15,7 +15,7 @@
             <Font name="System Bold" size="44.0" />
          </font>
       </Label>
-      <TableView fx:id="tableTop" editable="true" layoutX="128.0" layoutY="89.0" prefHeight="301.0" prefWidth="420.0" style="-fx-background-color: #d2dac5;">
+      <TableView fx:id="tableTop" editable="true" layoutX="128.0" layoutY="89.0" prefHeight="263.0" prefWidth="420.0" style="-fx-background-color: #d2dac5;">
          <columns>
             <TableColumn fx:id="colPosition" prefWidth="67.0" text="Position" />
             <TableColumn fx:id="colName" prefWidth="260.0" resizable="false" text="Name" />
@@ -25,10 +25,22 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="471.0" layoutY="404.0" mnemonicParsing="false" onAction="#deletePlayer" text="Delete Player" />
-      <TextField fx:id="name_to_search" layoutX="245.0" layoutY="404.0" />
-      <Button layoutX="95.0" layoutY="404.0" mnemonicParsing="false" onAction="#searchPlayer" text="Search Player" />
-      <Label fx:id="searchStructure" alignment="CENTER" layoutX="75.0" layoutY="441.0" prefHeight="21.0" prefWidth="148.0" text="Position, Name, Score" />
+      <Button layoutX="485.0" layoutY="24.0" mnemonicParsing="false" onAction="#deletePlayer" prefHeight="38.0" prefWidth="175.0" text="Delete my attempt">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <TextField fx:id="name_to_search" layoutX="266.0" layoutY="386.0" prefHeight="44.0" prefWidth="175.0">
+         <font>
+            <Font size="20.0" />
+         </font></TextField>
+      <Button layoutX="450.0" layoutY="386.0" mnemonicParsing="false" onAction="#searchPlayer" prefHeight="44.0" prefWidth="106.0" text="Search Player">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font></Button>
+      <Label fx:id="searchStructure" alignment="CENTER" layoutX="10.0" layoutY="385.0" prefHeight="45.0" prefWidth="243.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
       <Label alignment="CENTER" layoutX="450.0" layoutY="441.0" prefHeight="21.0" prefWidth="148.0" />
    </children>
 </Pane>

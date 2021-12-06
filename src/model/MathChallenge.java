@@ -62,7 +62,13 @@ public class MathChallenge {
 	
 	public String searchChallenger(String name) {
 		Player p = scoreboard.search(name);
-		return p.toString();
+		
+		if(p != null) {
+			return p.toString();
+		} else {
+			return "Player not found";
+		}
+		
 	}
 	
 	public String getExercise() {

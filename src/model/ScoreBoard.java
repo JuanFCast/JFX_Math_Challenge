@@ -16,7 +16,8 @@ public class ScoreBoard {
 	private Player root;
 	private int position;
 	private List<Player> top5 = new ArrayList<Player>();
-	private Player orderByName;
+	//private Player orderByName;
+	private List<Player> orderName = new ArrayList<Player>();
 	
 	public ScoreBoard(){
 		position = 1;
@@ -65,8 +66,6 @@ public class ScoreBoard {
 	private void saveInOtherTree() {
 		if(root != null) {
 			cloneInOthertree(root);
-		} else {
-			orderByName = null;
 		}
 	}
 	
@@ -77,43 +76,12 @@ public class ScoreBoard {
 			cloneInOthertree(p.getLeft());
 		}
 		
-		addByName(p, orderByName);
+		//addByName(p);
+		orderName.add(p);
 		
 		if(p.getRight() != null) {
 			cloneInOthertree(p.getRight());
 		}
-	}
-	
-	private boolean addByName(Player p, Player r) {
-		boolean sentinel = false;
-		Player current = r;
-
-		while(sentinel != true) {
-			if(current == null) {
-				current = p;
-				sentinel = true;
-			} else {
-				if(p.getName().compareTo(current.getName()) < 0) {
-					if(current.getLeft() == null) {
-						current.setLeft(p);
-						p.setUp(current);
-						sentinel = true;
-					} else {
-						current = current.getLeft();
-					}
-				} else {
-					if(current.getRight() == null) {
-						current.setRight(p);
-						p.setUp(current);
-						sentinel = true;
-					} else {
-						current = current.getRight();
-					}
-				}
-			}
-		}
-		
-		return true;
 	}
 	
 	//No me esta encontrando el player
@@ -134,8 +102,7 @@ public class ScoreBoard {
 			}
 		}
 		
-		orderByName = null;
-		saveInOtherTree();
+		orderName.add(n);
 	}
 	
 	//Para este caso manejaremos puntajes menores o iguales asignados a la izquierda, 
@@ -161,26 +128,19 @@ public class ScoreBoard {
 	}
 	
 	public Player search(String name) {
-		if(orderByName == null) {
+		if(orderName.isEmpty()) {
 			return null;
 		}else {
-			return search(orderByName, name);
+			
+			for(int i = 0; i < orderName.size(); i++) {
+				if(orderName.get(i).getName().equals(name)) {
+					return orderName.get(i);
+				}
+			}
+			
+			return null;
 		}
-	}
-	
-	private Player search(Player current, String name) {
-		if(current == null) {
-			return current;
-		}else if(current.getName().compareTo(name) == 0) {
-			return current;
-		}else if(current.getName().compareTo(name) > 0) {
-			return search(current.getRight(), name);
-		}else {
-			return search(current.getLeft(), name);
-		}
-	}
-	
-	
+	}		
 	
 	public void removePlayer(Player rem) {
 		if(rem != null) {
