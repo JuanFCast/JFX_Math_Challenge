@@ -71,6 +71,10 @@ public class MathChallenge {
 		
 	}
 	
+	public boolean search(String name) {
+		return(scoreboard.search(name) == null)?true:false;
+	}
+	
 	public String getExercise() {
 		return exercise.getExercise();
 	}

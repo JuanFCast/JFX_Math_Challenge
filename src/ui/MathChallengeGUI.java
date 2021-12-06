@@ -82,13 +82,18 @@ public class MathChallengeGUI {
     	String name = Name_txtField.getText();
     	
     	if(!name.equals("")) {
-    		mathChallenge.startChallenge(name);
-        	ChallengeMenu();
-        	Timer timer = new Timer();
-    		mathChallenge.setTimer(timer);
-        	startTimer(timer);
-        	progressTime();
-        	updateChallengeMenu();	
+    		if (mathChallenge.search(name)) {
+    			mathChallenge.startChallenge(name);
+            	ChallengeMenu();
+            	Timer timer = new Timer();
+        		mathChallenge.setTimer(timer);
+            	startTimer(timer);
+            	progressTime();
+            	updateChallengeMenu();
+			}else {
+				printWarning("El jugador ya se encuentra registrado, intende nuevo con otro nombre");
+			}
+    			
     	} else {
     		printWarning("The field can't be void");
     	}
