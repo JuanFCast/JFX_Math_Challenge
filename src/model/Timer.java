@@ -3,7 +3,7 @@ package model;
 public class Timer {
 
 	private int minutes = 0;
-	private int seconds = 10;
+	private int seconds = 3;
 	
 	
 	public Timer() {
