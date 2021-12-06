@@ -30,6 +30,7 @@ public class ScoreBoard {
 		if(root==null) {
 			
 		}else {
+			position = 1;
 			positions(root);
 		}
 	}

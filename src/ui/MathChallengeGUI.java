@@ -138,9 +138,16 @@ public class MathChallengeGUI {
 	@FXML
 	public void deletePlayer(ActionEvent event) {
 		
+		for(int i = 0;i < mathChallenge.getTop5().length; i++) {
+			if(mathChallenge.getChallenger() == mathChallenge.getTop5()[i]) {
+				mathChallenge.getTop5()[i] = null;
+			}
+		}
+		
 		mathChallenge.deleteChallenger();
-		mathChallenge.getTop5()[5]=null;
+		//mathChallenge.getTop5()[5] = null;
 			try {
+				mathChallenge.exportPlayers();
 				openTop();
 			} catch (IOException e) {
 			}

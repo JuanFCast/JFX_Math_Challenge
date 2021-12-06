@@ -44,7 +44,7 @@ public class MathChallenge {
 			top5[2] = top.get(2);
 			top5[3] = top.get(3);
 			top5[4] = top.get(4);
-			top5[5] = top.get(5);
+			top5[5] = challenger;
 		} catch(IndexOutOfBoundsException e) {
 			
 		}
@@ -53,14 +53,6 @@ public class MathChallenge {
 	private List<Player> topPlayers() {
 		List<Player> topPlayer = scoreboard.top5();
 
-		if (challenger != null) {
-			topPlayer.add(challenger);
-		}
-
-		try {
-			topPlayer.remove(6);
-		} catch (IndexOutOfBoundsException e) {
-		}
 		return topPlayer;
 	}
 	
