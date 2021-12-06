@@ -173,6 +173,7 @@ public class ScoreBoard {
 				rem.setScore(succesor.getScore());			//que queremos eliminar
 				removePlayer(succesor);						//ahora borramos el duplicado
 			}
+			orderName.remove(search(rem.getName()));
 		}
 	}
 	
