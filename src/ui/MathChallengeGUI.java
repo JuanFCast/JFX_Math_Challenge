@@ -64,6 +64,14 @@ public class MathChallengeGUI {
     private TableColumn<Player, Integer> colPosition;
     @FXML
     private TableColumn<Player, Long> colScore;
+    @FXML
+    private TextField name_to_search;
+    @FXML
+    private Label searchStructure;
+
+   
+    
+
 
 	//Constructor void
 	public MathChallengeGUI() {
@@ -127,6 +135,35 @@ public class MathChallengeGUI {
 		}
 		updateChallengeMenu();
 	}
+	
+	@FXML
+	public void deletePlayer(ActionEvent event) {
+		/*
+		mathChallenge.deleteChallenger();
+		try {
+			openTop();
+			mathChallenge.exportPlayers();//exportar
+		} catch (IOException e) {
+			
+		}
+		*/
+		
+	}
+
+	@FXML
+	public void searchPlayer(ActionEvent event) {
+		String name = "";
+		String answer = "";
+		
+		name = name_to_search.getText();
+		answer = mathChallenge.searchChallenger(name);
+		
+		searchStructure.setText(answer);
+		
+	}
+	
+	
+	
 
 	public void LogInMenu() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login_pane.fxml"));
@@ -295,6 +332,8 @@ public class MathChallengeGUI {
 		progressbar.setProgress(progress);
 
 	}
+	
+	
 
 
 	//Getters & Setters
@@ -306,5 +345,8 @@ public class MathChallengeGUI {
 	public void printWarning(String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
+	
+	
+	
 
 }

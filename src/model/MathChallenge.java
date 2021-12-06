@@ -26,12 +26,23 @@ public class MathChallenge {
 	
 	public List<Player> topPlayers() {
 		List<Player> topPlayer = scoreboard.top5();
-		topPlayer.add(challenger);
-			try {
-					topPlayer.remove(6);
-			} catch (IndexOutOfBoundsException e) {
-			}
+		if (challenger != null) {
+			topPlayer.add(challenger);
+		}
+
+		try {
+			topPlayer.remove(6);
+		} catch (IndexOutOfBoundsException e) {
+		}
 		return topPlayer;
+	}
+	
+	public void deleteChallenger(){
+		scoreboard.removePlayer(challenger);
+	}
+	
+	public String searchChallenger(String name) {
+		return scoreboard.search(name).toString();
 	}
 	
 	public String getExercise() {
