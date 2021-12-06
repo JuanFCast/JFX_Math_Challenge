@@ -1,6 +1,8 @@
 package model;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MathChallenge {
@@ -9,6 +11,7 @@ public class MathChallenge {
 	private Player challenger;
 	private Timer timer;
 	private ScoreBoard scoreboard;
+	private Player[] top5 = new Player[6];
 	
 	public MathChallenge() {
 		scoreboard = new ScoreBoard();
@@ -27,8 +30,24 @@ public class MathChallenge {
 		scoreboard.saveData();
 	}
 	
-	public List<Player> topPlayers() {
+	public List<Player> top5Players() {
+		ArrayList<Player> sublist = new ArrayList<Player>(Arrays.asList(top5));
+		return sublist;
+	}
+	
+	public void addInArray() {
+		List<Player> top = topPlayers();
+		top5[0] = top.get(0);
+		top5[1] = top.get(1);
+		top5[2] = top.get(2);
+		top5[3] = top.get(3);
+		top5[4] = top.get(4);
+		top5[5] = top.get(5);
+	}
+	
+	private List<Player> topPlayers() {
 		List<Player> topPlayer = scoreboard.top5();
+
 		if (challenger != null) {
 			topPlayer.add(challenger);
 		}
@@ -73,10 +92,6 @@ public class MathChallenge {
 		return challenger;
 	}
 	
-	public long getScore() {
-		return challenger.getScore();
-	}
-	
 	public void setTimer(Timer t) {
 		timer = t;
 	}
@@ -85,16 +100,13 @@ public class MathChallenge {
 		return timer;
 	}
 	
-	public String getTime() {
-		return timer.time();
-	}
-	
 	public boolean timeIsOver() {
 		return timer.timeIsOver();
 	}
 	
-	public void start() throws InterruptedException {
-		timer.startTimer();
+
+	public Player[] getTop5() {
+		return top5;
 	}
 	
 }

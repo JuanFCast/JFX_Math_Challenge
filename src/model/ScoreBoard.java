@@ -175,7 +175,6 @@ public class ScoreBoard {
 			System.out.println("orderByName es null");
 			return null;
 		}else {
-			System.out.println(orderByName.getName());
 			return search(orderByName, name);
 		}
 	}

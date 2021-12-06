@@ -137,15 +137,15 @@ public class MathChallengeGUI {
 	
 	@FXML
 	public void deletePlayer(ActionEvent event) {
-		/*
+		
 		mathChallenge.deleteChallenger();
-		try {
-			openTop();
-			mathChallenge.exportPlayers();//exportar
-		} catch (IOException e) {
-			
-		}
-		*/
+		mathChallenge.getTop5()[5]=null;
+			try {
+				openTop();
+			} catch (IOException e) {
+			}
+		
+		
 		
 	}
 
@@ -193,11 +193,14 @@ public class MathChallengeGUI {
 		mainStage.setTitle("Tabla de Posiciones");
 		mainStage.show();
 		
+		observableListPlayers = null;
+		
 		intializeTableViewPlayers();
+		
 	}
 	
 	public void intializeTableViewPlayers() {
-		observableListPlayers = FXCollections.observableArrayList(mathChallenge.topPlayers());
+		observableListPlayers = FXCollections.observableArrayList(mathChallenge.top5Players());
     	
     	tableTop.setItems(observableListPlayers);
     	colName.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
@@ -315,6 +318,7 @@ public class MathChallengeGUI {
         if(mathChallenge.timeIsOver()) {
             mathChallenge.addPlayer();
             try {
+            	mathChallenge.addInArray();
                 openTop();
                 mathChallenge.exportPlayers();//exporta
             } catch (IOException e) {

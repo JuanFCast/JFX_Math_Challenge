@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <package id="1" language="java" name="ui" project="Math_Challenge" file="/Math_Challenge/src/ui" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="984" width="609" x="-38" y="-125"/>    
+    <position height="1052" width="609" x="-38" y="-125"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="2" language="java" name="ui.Main" project="Math_Challenge" file="/Math_Challenge/src/ui/Main.java" 
@@ -17,7 +17,7 @@
   </class>  
   <class id="3" language="java" name="ui.MathChallengeGUI" project="Math_Challenge" 
     file="/Math_Challenge/src/ui/MathChallengeGUI.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="269" y="468"/>    
+    <position height="-1" width="-1" x="268" y="490"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -26,12 +26,12 @@
   </class>  
   <package id="4" language="java" name="model" project="Math_Challenge" file="/Math_Challenge/src/model" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="1155" width="959" x="807" y="-138"/>    
+    <position height="1365" width="959" x="807" y="-138"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="5" language="java" name="model.RandomNumber" project="Math_Challenge" 
     file="/Math_Challenge/src/model/RandomNumber.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1152" y="839"/>    
+    <position height="-1" width="-1" x="1158" y="1028"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -49,7 +49,7 @@
   </class>  
   <class id="7" language="java" name="model.MathChallenge" project="Math_Challenge" 
     file="/Math_Challenge/src/model/MathChallenge.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1139" y="84"/>    
+    <position height="-1" width="-1" x="1152" y="164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -58,7 +58,7 @@
   </class>  
   <class id="8" language="java" name="model.Exercise" project="Math_Challenge" 
     file="/Math_Challenge/src/model/Exercise.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1157" y="556"/>    
+    <position height="-1" width="-1" x="1152" y="653"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -85,12 +85,12 @@
   </class>  
   <package id="11" language="java" name="Thread" project="Math_Challenge" file="/Math_Challenge/src/Thread" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="456" width="457" x="35" y="933"/>    
+    <position height="456" width="457" x="34" y="966"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="12" language="java" name="Thread.ExerciseThread" project="Math_Challenge" 
     file="/Math_Challenge/src/Thread/ExerciseThread.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="245" y="1107"/>    
+    <position height="-1" width="-1" x="249" y="1180"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -98,47 +98,45 @@
     </display>  
   </class>  
   <association id="13">    
-    <bendpoint x="1426" y="937"/>    
-    <bendpoint x="1628" y="940"/>    
-    <bendpoint x="1645" y="667"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="14" name="left">        
-        <position height="0" width="0" x="42" y="137"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="14" name="controller">        
+        <position height="0" width="0" x="0" y="110"/>      
       </attribute>      
       <multiplicity id="15" minimum="0" maximum="1">        
-        <position height="0" width="0" x="42" y="137"/>      
+        <position height="0" width="0" x="0" y="110"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="16">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="17" name="mathChallenge">        
-        <position height="0" width="0" x="-1" y="2"/>      
+    <bendpoint x="989" y="898"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="17" name="genNumber">        
+        <position height="0" width="0" x="28" y="185"/>      
       </attribute>      
       <multiplicity id="18" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1" y="2"/>      
+        <position height="0" width="0" x="28" y="185"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="19">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="20" name="challenger">        
-        <position height="0" width="0" x="42" y="137"/>      
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="20" name="genOperator">        
+        <position height="0" width="0" x="28" y="185"/>      
       </attribute>      
       <multiplicity id="21" minimum="0" maximum="1">        
-        <position height="0" width="0" x="42" y="137"/>      
+        <position height="0" width="0" x="28" y="185"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="22">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="23" name="root">        
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="23" name="challenger">        
         <position height="0" width="0" x="42" y="137"/>      
       </attribute>      
       <multiplicity id="24" minimum="0" maximum="1">        
@@ -151,95 +149,101 @@
   <association id="25">    
     <end type="SOURCE" refId="7" navigable="false">      
       <attribute id="26" name="exercise">        
-        <position height="0" width="0" x="20" y="42"/>      
+        <position height="0" width="0" x="15" y="139"/>      
       </attribute>      
       <multiplicity id="27" minimum="0" maximum="1">        
-        <position height="0" width="0" x="20" y="42"/>      
+        <position height="0" width="0" x="15" y="139"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="28">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="29" name="genOperator">        
-        <position height="0" width="0" x="22" y="-4"/>      
+    <bendpoint x="695" y="475"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="29" name="mathChallenge">        
+        <position height="0" width="0" x="12" y="82"/>      
       </attribute>      
       <multiplicity id="30" minimum="0" maximum="1">        
-        <position height="0" width="0" x="22" y="-4"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="32" name="controller">        
-        <position height="0" width="0" x="1" y="88"/>      
-      </attribute>      
-      <multiplicity id="33" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1" y="88"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="34">    
-    <bendpoint x="814" y="79"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="35" name="mathChallenge">        
-        <position height="0" width="0" x="-1" y="2"/>      
-      </attribute>      
-      <multiplicity id="36" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1" y="2"/>      
+        <position height="0" width="0" x="12" y="82"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="37">    
+  <association id="31">    
     <bendpoint x="856" y="907"/>    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="38" name="exercise">        
-        <position height="0" width="0" x="20" y="42"/>      
+      <attribute id="32" name="exercise">        
+        <position height="0" width="0" x="15" y="139"/>      
       </attribute>      
-      <multiplicity id="39" minimum="0" maximum="1">        
-        <position height="0" width="0" x="20" y="42"/>      
+      <multiplicity id="33" minimum="0" maximum="1">        
+        <position height="0" width="0" x="15" y="139"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="41" name="timer">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <association id="34">    
+    <bendpoint x="1477" y="912"/>    
+    <bendpoint x="1589" y="921"/>    
+    <bendpoint x="1613" y="818"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="35" name="right">        
+        <position height="0" width="0" x="42" y="137"/>      
       </attribute>      
-      <multiplicity id="42" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="0" width="0" x="42" y="137"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <bendpoint x="852" y="165"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="38" name="mathChallenge">        
+        <position height="0" width="0" x="12" y="82"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="1">        
+        <position height="0" width="0" x="12" y="82"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <bendpoint x="1426" y="937"/>    
+    <bendpoint x="1628" y="940"/>    
+    <bendpoint x="1645" y="667"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="41" name="left">        
+        <position height="0" width="0" x="42" y="137"/>      
+      </attribute>      
+      <multiplicity id="42" minimum="0" maximum="1">        
+        <position height="0" width="0" x="42" y="137"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="43">    
-    <bendpoint x="943" y="849"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="44" name="genNumber">        
-        <position height="0" width="0" x="22" y="-4"/>      
-      </attribute>      
-      <multiplicity id="45" minimum="0" maximum="1">        
-        <position height="0" width="0" x="22" y="-4"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
     <bendpoint x="1522" y="902"/>    
     <bendpoint x="1561" y="870"/>    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="47" name="up">        
+      <attribute id="44" name="up">        
+        <position height="0" width="0" x="42" y="137"/>      
+      </attribute>      
+      <multiplicity id="45" minimum="0" maximum="1">        
+        <position height="0" width="0" x="42" y="137"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="47" name="root">        
         <position height="0" width="0" x="42" y="137"/>      
       </attribute>      
       <multiplicity id="48" minimum="0" maximum="1">        
@@ -250,18 +254,15 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="49">    
-    <bendpoint x="1477" y="912"/>    
-    <bendpoint x="1589" y="921"/>    
-    <bendpoint x="1613" y="818"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="50" name="right">        
-        <position height="0" width="0" x="42" y="137"/>      
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="50" name="timer">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="51" minimum="0" maximum="1">        
-        <position height="0" width="0" x="42" y="137"/>      
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
